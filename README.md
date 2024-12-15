@@ -1,6 +1,6 @@
 <div align="center">
 
-# Distributed Systems & Enterprise Software Architecture
+# Advanced Computer Vision and Distributed Systems Research
 ### Implementation at Huajun Technology Co., Ltd
 #### Veronica Zhao
 [![NYU](https://img.shields.io/badge/-NYU-57068C)](https://www.nyu.edu/)
