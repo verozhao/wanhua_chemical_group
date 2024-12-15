@@ -1,123 +1,161 @@
 <div align="center">
-
-# Advanced Computer Vision and Distributed Systems Research
-### Implementation at Huajun Technology Co., Ltd
-#### Veronica Zhao
-[![NYU](https://img.shields.io/badge/-NYU-57068C)](https://www.nyu.edu/)
-[![CDS](https://img.shields.io/badge/-Center%20for%20Data%20Science-E4002B)](https://cds.nyu.edu/)
-
+    
+# Enterprise Video Analytics & ETL Platform
+    
 </div>
 
 
-## Technical Architecture
+## Overview
+An enterprise-grade platform that integrates real-time video processing, facial recognition, and data pipeline management. The system processes video streams from multiple sources, performs advanced analytics, and manages data flow between Oracle databases and AWS cloud infrastructure.
 
-### 1. Distributed File Storage System
-**Core Technologies**:
-- Java NIO for non-blocking I/O operations
-- Apache Hadoop for distributed file storage
-- RAID configuration for redundancy management
-- java.util.zip for compression optimization
+## Core Components
 
-**Implementation Features**:
-- Non-blocking I/O for improved throughput
-- Distributed file system management
-- Redundancy optimization
-- Custom compression algorithms
+### 1. Video Processing Engine
+- Multi-threaded video frame processing using OpenCV
+- Real-time facial recognition with Haar Cascade classifiers
+- Optimized frame buffer management for high-throughput video streams
+- Support for concurrent processing of multiple video feeds
+- Configurable thread pool for scalable processing
 
-### 2. Multi-threaded Server Architecture
-**Technical Stack**:
-- Java Concurrency framework
-- Weighted Round-Robin load balancing
-- Java Profiling Tool (Visual VM) for performance monitoring
-- Custom thread pool implementation
+### 2. ETL Pipeline
+- Robust data extraction from Oracle databases
+- Configurable transformation rules for data normalization
+- Automated loading to AWS S3 data lake
+- Transaction management and error handling
+- Support for incremental data loads
 
-**Performance Optimization**:
-- Advanced thread management
-- Load distribution algorithms
-- Real-time performance monitoring
-- Resource utilization optimization
+### 3. Cloud Integration
+- AWS S3 integration for scalable storage
+- Region-specific configuration
+- Secure credential management
+- Optimized data transfer protocols
 
-### 3. Enterprise CRM Platform
-**System Architecture**:
-- Backend: Spring Boot
-- Primary Database: MySQL
-- Data Tracking: MongoDB
-- Message Processing: Apache Kafka
+## Technical Stack
 
-**Technical Components**:
-- RESTful API implementation
-- Real-time data processing
-- Event-driven architecture
-- Distributed data storage
+### Core Technologies
+- Java 11+
+- OpenCV (via ByteDeco JavaCV)
+- AWS SDK
+- Oracle JDBC
+- Threading utilities
 
-### 4. Cross-Platform Implementation
-**Technical Stack**:
-- Backend: Spring Boot
-- Performance: ProGuard optimization
-- Memory management optimization
-- Cross-platform compatibility layer
-
-## System Implementation
-
-```java
-// Core distributed architecture
-public class DistributedSystem {
-    private final NIOServer nioServer;
-    private final HadoopFileSystem fileSystem;
-    private final RaidManager redundancyManager;
-    private final CompressionService compressionService;
-}
-
-// Multi-threaded implementation
-public class ServerArchitecture {
-    private final ConcurrencyManager threadManager;
-    private final WeightedRoundRobin loadBalancer;
-    private final VisualVMProfiler performanceMonitor;
-}
-
-// CRM system architecture
-public class CRMPlatform {
-    private final SpringBootApplication application;
-    private final MySQLDatabase primaryDb;
-    private final MongoDBTracker dataTracker;
-    private final KafkaProcessor messageProcessor;
-}
+### Dependencies
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.bytedeco</groupId>
+        <artifactId>javacv-platform</artifactId>
+        <version>1.5.7</version>
+    </dependency>
+    <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>aws-java-sdk-s3</artifactId>
+        <version>1.12.261</version>
+    </dependency>
+    <dependency>
+        <groupId>com.oracle.database.jdbc</groupId>
+        <artifactId>ojdbc8</artifactId>
+        <version>21.5.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
-## Research Foundations
+## Architecture
 
-### Distributed Systems
-- Non-blocking I/O patterns
-- Distributed file system architecture
-- Data redundancy optimization
-- Compression algorithms
+### Video Processing Pipeline
+1. Frame Capture
+   - Concurrent frame acquisition
+   - Buffer management
+   - Frame quality assessment
 
-### Concurrent Computing
-- Thread pool optimization
-- Load balancing strategies
-- Performance profiling
-- Resource management
+2. Processing Units
+   - Grayscale conversion
+   - Face detection
+   - Feature extraction
+   - Metadata generation
 
-### Enterprise Architecture
-- Microservices design
-- Event-driven systems
-- Data persistence strategies
-- Message queue optimization
+3. Output Management
+   - Frame persistence
+   - Event triggering
+   - Analytics aggregation
 
-## Performance Metrics
+### Data Pipeline
+1. Extraction Phase
+   - Connection pooling
+   - Query optimization
+   - Batch processing
 
-- System uptime: >95%
-- Data redundancy reduction: 40%
-- Request handling improvement: 400%
-- Memory optimization: 35%
+2. Transformation Phase
+   - Data normalization
+   - Schema mapping
+   - Quality validation
 
-## Academic Contact
-Veronica Zhao  
-New York University  
-Department of Computer Science and the Center for Data Science   
-Email: veronica.zhao@nyu.edu
+3. Loading Phase
+   - S3 multipart upload
+   - Consistency verification
+   - Performance monitoring
 
----
+## Configuration
+
+### AWS Configuration
+```properties
+aws.accessKey=YOUR_ACCESS_KEY
+aws.secretKey=YOUR_SECRET_KEY
+aws.region=YOUR_REGION
+aws.bucket=YOUR_BUCKET_NAME
+```
+
+### Database Configuration
+```properties
+db.url=jdbc:oracle:thin:@your_host:1521:your_service_name
+db.username=your_username
+db.password=your_password
+```
+
+### Video Processing Configuration
+```properties
+video.threadPool.size=4
+video.frame.interval=50
+video.cascade.path=path/to/haarcascade_frontalface_default.xml
+```
+
+## Performance Optimization
+
+- Implemented thread pooling for optimal CPU utilization
+- Batch processing for database operations
+- Memory-efficient frame handling
+- Configurable buffer sizes for different deployment scenarios
+- Adaptive thread allocation based on system resources
+
+## Security Considerations
+
+- Secure credential management
+- Data encryption in transit and at rest
+- Access control implementation
+- Audit logging
+- Compliance with data protection regulations
+
+## Future Enhancements
+
+1. Integration of deep learning models for advanced facial recognition
+2. Real-time analytics dashboard
+3. Distributed processing capabilities
+4. Automated failover mechanisms
+5. Enhanced monitoring and alerting system
+
+## Contributing
+
+Please refer to our contribution guidelines for details on:
+- Code style
+- Testing requirements
+- Pull request process
+- Documentation standards
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
 
 <div align="center">
 © 2024 Veronica Zhao
